@@ -5,9 +5,13 @@ ticker = "AAPL"
 df = yf.download(
     ticker,
     start="2015-01-01",
-    end="2025-01-01"
+    end="2025-01-01",
+    auto_adjust=True
 )
 
-df.to_csv("data/raw/aapl.csv")
+df.reset_index(inplace=True)
 
-print(df.head())
+df.to_csv(
+    "data/raw/aapl.csv",
+    index=False
+)
