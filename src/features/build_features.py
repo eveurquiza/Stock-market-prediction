@@ -24,3 +24,6 @@ df['MACD'] = df['Close'].ewm(span=12, adjust=False).mean() - df['Close'].ewm(spa
 
 df['Bollinger_Band'] = df['Close'].rolling(window=20).mean() + (df['Close'].rolling(window=20).std() * 2)
 
+df['Target'] = df['Close'].shift(-1)
+
+df = df.dropna()
